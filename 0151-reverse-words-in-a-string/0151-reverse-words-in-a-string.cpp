@@ -1,26 +1,27 @@
 class Solution {
 public:
     string reverseWords(string s) {
-        istringstream iss(s);  // Input string stream
-        vector<string> words;  // Vector to store words
-        string word;           // Temporary string to store words
+        vector<string> strings;  // Store the words
+        stringstream ss(s);      // Use stringstream to split the string
+        string item;             // Store the word temporarily
+        string result;
 
-        // Extract words while ignoring extra spaces
-        while (iss >> word) {
-            words.push_back(word);
+        // Split the string by spaces
+        // getline(ss, item, ' ') reads the string from ss to item until ' ' is found
+        while (getline(ss, item, ' ')) {
+            strings.push_back(item);
         }
 
-        // Reverse the words in place
-        reverse(words.begin(), words.end());
+        // Reverse the words
+        for (int i = strings.size() - 1; i >= 0; i--) {
+            if (!strings[i].empty())
+                result += strings[i] + " ";
+        }
 
-        // Join words with a single space between them
-        // accumulate(begin, end, initial_value, operation)
-        //   - skips the first word to avoid an extra leading space, using it as the initial value instead
-        //   - default operation is just `+`
-        return accumulate(next(words.begin()), words.end(), words[0],
-                          [](const string& a, const string& b) {
-                              return a + ' ' + b;
-                          });
+        // Remove the last space
+        result.pop_back();
+
+        return result;
         
     }
 };
