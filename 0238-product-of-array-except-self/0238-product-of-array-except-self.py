@@ -8,16 +8,25 @@ class Solution(object):
         n = len(nums)
         result = [1] * n
 
-        prefix = 1
+        temp = 1
+        zero_count = 0
         for i in range(n):
-            result[i] = prefix
-            prefix *= nums[i]
+            if nums[i] == 0:
+                zero_count += 1
+                continue
+            else:
+                temp *= nums[i]
 
-        suffix = 1
-        for i in range(n - 1, -1, -1):
-            result[i] *= suffix
-            suffix *= nums[i]
+        if zero_count == 0:
+            for i in range(n):
+                result[i] = temp // nums[i]
+        elif zero_count == 1:
+            for i in range(n):
+                if nums[i] == 0:
+                    result[i] = temp
+                else:
+                    result[i] = 0
+        else:
+            result = [0] * n
 
         return result
-
-        
