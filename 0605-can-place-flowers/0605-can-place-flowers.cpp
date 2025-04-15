@@ -1,22 +1,21 @@
 class Solution {
 public:
     bool canPlaceFlowers(vector<int>& flowerbed, int n) {
-        // count of flowers that can be planted (without viloating rules)
-        int count = 0;
+        int left = n;
+        int size = flowerbed.size();
 
-        // plant the flowers
-        for (int i = 0; i < flowerbed.size(); i++) {
-            if (flowerbed[i] == 0) {
-                int prev = (i == 0) ? 0 : flowerbed[i - 1]; // consider left end
-                int next = (i == flowerbed.size() - 1) ? 0 : flowerbed[i + 1]; //consider right end
-                if (prev == 0 && next == 0) {
-                    flowerbed[i] = 1;
-                    count++;
-                }
+        for (int i = 0; i < size && left > 0; ++i) {
+            if (flowerbed[i] == 1) continue;
+
+            bool emptyLeft = (i == 0) || (flowerbed[i - 1] == 0);
+            bool emptyRight = (i == size - 1) || (flowerbed[i + 1] == 0);
+
+            if (emptyLeft && emptyRight) {
+                flowerbed[i] = 1; // 현재 위치에 꽃을 심는다
+                left--;
             }
         }
 
-        // return the result
-        return count >= n;
+        return left == 0;
     }
 };
