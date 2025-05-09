@@ -23,6 +23,7 @@ public:
         for (char c : s) sum += c - '0';
         if (sum % 2 == 1) return 0;
 
+        // 팩토리얼 및 인버스 팩토리얼 계산
         precompute(n);
 
         // dp[i][j]
@@ -38,12 +39,15 @@ public:
             digits[d]++;
             for (int i = halfSum; i >= d; i--)
                 for (int j = halfLen; j > 0; j--)
-                    // 배낭 문제 생각 -> 이전 상태 dp[i - d][j - 1]에서 d를 하나 더 넣는 방식으로 도달할 수 있음
+                    // knapsack 문제 생각 -> 이전 상태 dp[i - d][j - 1]에서 d를 하나 더 넣는 방식으로 도달할 수 있음
                     dp[i][j] = (dp[i][j] + dp[i - d][j - 1]) % mod;
         }
 
+
         ll res = dp[halfSum][halfLen];
         res = res * fact[halfLen] % mod * fact[n - halfLen] % mod;
+
+        // 하나의 digit이 여러번 들어가는 경우를 생각해야하니까 중복 제거가 필요
         for (int i : digits)
             res = res * invFact[i] % mod;
         return res;
