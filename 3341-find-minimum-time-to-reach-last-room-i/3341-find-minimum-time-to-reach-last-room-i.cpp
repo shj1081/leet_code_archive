@@ -6,6 +6,8 @@ public:
 
         vector<vector<int>> minTime(n, vector<int>(m, INT_MAX));
         using T = tuple<int, int, int>; // time, x, y
+
+        // 다익스트라 알고리즘
         priority_queue<T, vector<T>, greater<T>> pq;
         pq.push({0, 0, 0});
 
