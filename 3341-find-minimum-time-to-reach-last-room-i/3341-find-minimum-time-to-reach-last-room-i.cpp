@@ -8,6 +8,8 @@ public:
         using T = tuple<int, int, int>; // time, x, y
         priority_queue<T, vector<T>, greater<T>> pq;
         pq.push({0, 0, 0});
+
+        // (i, j)까지 도달하는데 걸리는 최소 시간
         minTime[0][0] = 0;
 
         int dx[4] = {-1,1,0,0};
@@ -27,6 +29,7 @@ public:
                 int wait = max(t, moveTime[nx][ny]);
                 int nextT = wait + 1;
 
+                // 단축 가능할때만 추가 탐색
                 if (nextT < minTime[nx][ny]) {
                     minTime[nx][ny] = nextT;
                     pq.push({nextT, nx, ny});
