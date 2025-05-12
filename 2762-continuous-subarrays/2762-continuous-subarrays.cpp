@@ -1,5 +1,14 @@
 class Solution {
 public:
+
+    // | r | hasX          | l | 조건 만족?    | 추가된 개수 (r-l+1) | 총합 |
+    // | - | ------------- | - | --------- | -------------- | -- |
+    // | 0 | {5:1}         | 0 | ✅         | 1              | 1  |
+    // | 1 | {4:1,5:1}     | 0 | ✅         | 2              | 3  |
+    // | 2 | {2:1,4:1,5:1} | 0 | ❌ (5-2>2) | → l=1, erase 5 |    |
+    // |   | {2:1,4:1}     | 1 | ✅         | 2              | 5  |
+    // | 3 | {2:1,4:2}     | 1 | ✅         | 3              | 8  |
+
     static long long continuousSubarrays(vector<int>& nums) {
         const int n=nums.size();
         long long cnt=0;
