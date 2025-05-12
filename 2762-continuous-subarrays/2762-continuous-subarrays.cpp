@@ -2,6 +2,13 @@ class Solution {
 public:
     long long continuousSubarrays(vector<int>& nums) {
         
+        // runtime
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+
+
+        
         // 최대 최소를 빠르게 찾기 위해 자동으로 정렬이 가능한 multiset 사용
         multiset<int> window;
         int left = 0;
