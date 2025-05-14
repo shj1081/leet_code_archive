@@ -78,7 +78,7 @@ public:
             }
         }
 
-        // 3) A^t 계산
+        // 3) A^t 계산 (t번 반복 하므로)
         Mat At = matPow(A, t);
 
         // 4) A^t * freq 벡터 곱해서 최종 freqT 계산
