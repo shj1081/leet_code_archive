@@ -69,7 +69,7 @@ public:
         for (char c : s) 
             freq[c - 'a']++;
 
-        // 2) 전이 행렬 A 구성
+        // 2) 전이 행렬 A 구성 (하나의 round 진행 했을 떄 어떻게 변환되는지를 기술하는 matrix)
         Mat A;
         for (int i = 0; i < L; ++i) {
             for (int d = 1; d <= nums[i]; ++d) {
