@@ -42,6 +42,10 @@
 ───────────────────────────────────────────────────────────────────────────────
 */
 
+
+// 결과적으로 l이 현재 루프에서 num의 인덱스보다 작은 것 중에 r값이 가장 큰 query를 우선 사용하게 되니 (greedy)
+// 범위가 넓은 query들을 먼저 소모하여 효율적으로 필요한 쿼리만 먼저 사용 가능
+
 class Solution {
 public:
     int maxRemoval(vector<int>& nums, vector<vector<int>>& queries) {
@@ -91,3 +95,4 @@ public:
         return static_cast<int>(queries.size()) - usedCnt;
     }
 };
+
