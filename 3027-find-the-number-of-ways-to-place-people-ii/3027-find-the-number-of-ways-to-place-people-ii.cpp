@@ -12,7 +12,7 @@ public:
         int validPairCnt = 0;
         for (int idxA = 0; idxA < points.size(); ++idxA) {
             int yOfPointA = points[idxA][1];
-            int highestYofPrevPointB = numeric_limits<int>::min();
+            int highestYofPrevPointB = numeric_limits<int>::min(); // init value
 
             for (int idxB = idxA+1; idxB < points.size(); ++idxB) {
                 int curYofPointB = points[idxB][1];
