@@ -47,16 +47,17 @@ public:
 
 private:
     string toLower(const string& s) {
-        string t = s;
-        for (auto &c : t) c = tolower(c);
+        string t;
+        t.reserve(s.size());
+        for (char c : s) t.push_back(tolower(c));
         return t;
     }
 
-    // change all vowel to '*'
     string devowelKey(const string& s) {
-        string t = s;
-        for (auto &c : t) {
-            if (isVowel(c)) c = '*';
+        string t;
+        t.reserve(s.size());
+        for (char c : s) {
+            t.push_back(isVowel(c) ? '*' : c);
         }
         return t;
     }
